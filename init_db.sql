@@ -36,7 +36,7 @@ CREATE TABLE Imagen (
 GO
 
 INSERT INTO Imagen (Activo, Respuesta, fechaInicio, fechaFinalizacion, ImagenURL, email_Usuario) VALUES
-(1, 'La Mona Lisa', GETDATE(), DATEADD(day, 7, GETDATE()), 'https://ejemplo.com/mona_lisa_pixelada.jpg', 'admin@game.com');
+(1, 'La Mona Lisa', GETDATE(), DATEADD(day, 7, GETDATE()), 'https://ejemplo.com/mona_lisa_pixelada.jpg');
 GO
 
 CREATE TABLE Respuesta (
