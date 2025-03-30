@@ -12,8 +12,6 @@ database = "master"
 username = "sa"
 password = "YourPassword123!"
 
-
-
 # ===== Database connection function =====
 def get_connection():
     return pymssql.connect(server=server, port=port, user=username, password=password, database=database)
@@ -146,7 +144,7 @@ def post_imagen():
 
 
 
-@app.route('/Respuesta', methods=['GET}'])
+@app.route('/Respuesta', methods=['GET'])
 def get_Imagen():
     conn = get_connection()
     cursor = conn.cursor(as_dict=True)
