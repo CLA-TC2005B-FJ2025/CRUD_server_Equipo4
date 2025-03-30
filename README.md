@@ -51,3 +51,5 @@ GO
 cd servicios\ WEB/
 python WEBservices.py
 ```
+
+### Basandose en la documentacion, se debe usar **Postman**
