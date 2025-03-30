@@ -12,6 +12,8 @@ database = "master"
 username = "sa"
 password = "YourPassword123!"
 
+
+
 # ===== Database connection function =====
 def get_connection():
     return pymssql.connect(server=server, port=port, user=username, password=password, database=database)
@@ -49,6 +51,54 @@ def create_usuario():
     finally:
         conn.close()
 
+@app.route('/Usuario/<string:email>', methods=['GET'])
+def get_usuario_by_email(email):
+    conn = get_connection()
+    cursor = conn.cursor(as_dict=True)
+    cursor.execute('SELECT * FROM Usuario WHERE email = %s', (email,))
+    data = cursor.fetchone()
+    conn.close()
+    if data is None:
+        return jsonify({'mensaje': 'Usuario no encontrado'}), 404
+    return jsonify(data)
+
+@app.route('/Usuario/<string:email>', methods=['PUT'])
+def update_usuario(email):
+    data = request.json
+    nuevo_nombre = data['NombreUsuario']
+    conn = get_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute('UPDATE Usuario SET NombreUsuario = %s WHERE email = %s', (nuevo_nombre, email))
+        conn.commit()
+        if cursor.rowcount == 0:
+            return jsonify({'mensaje': 'Usuario no encontrado'}), 404
+        return jsonify({'mensaje': 'Usuario actualizado'})
+    except Exception as e:
+        return jsonify({'mensaje': str(e)}), 500
+    finally:
+        conn.close()
+
+@app.route('/Usuario/<string:email>', methods=['DELETE'])
+def delete_usuario(email):
+    conn = get_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute('SELECT 1 FROM Usuario WHERE email = %s', (email,))
+        if not cursor.fetchone():
+            return jsonify({'mensaje': 'Usuario no encontrado'}), 404
+        
+        cursor.execute('DELETE FROM Usuario WHERE email = %s', (email,))
+        conn.commit()
+        
+        return jsonify({'mensaje': 'Usuario eliminado'})
+    except pymssql.IntegrityError:
+        return jsonify({'mensaje': 'No se puede eliminar el usuario porque tiene registros relacionados'}), 400
+    except Exception as e:
+        return jsonify({'mensaje': str(e)}), 500
+    finally:
+        conn.close()
+
 # ===== Tabla preguntas =====
 @app.route('/Pregunta', methods=['GET'])
 def get_preguntas():
@@ -71,17 +121,30 @@ def get_pregunta(id):
     else:
         return jsonify({'mensaje': 'Pregunta no encontrada'}), 404
 
-
-
+# ===== Tabla imagen =====
 @app.route('/Imagen', methods=['GET'])
-def get_Imagen():
+def get_imagen():
     conn = get_connection()
     cursor = conn.cursor(as_dict=True)
     cursor.execute('SELECT ImagenID, Activo, fechaInicio, fechaFinalizacion FROM Imagen;') #No regresa la respuesta porque sería peligroso que los usuarios pudieran acceder a ella
-
     data = cursor.fetchall()
     conn.close()
     return jsonify(data)
+
+@app.route('/Imagen', methods=['POST'])
+def post_imagen():
+    data = request.json
+    email = data['email']
+    NombreUsuario = data['NombreUsuario']
+    conn = get_connection()
+    cursor = conn.cursor()
+    try:
+        cursor.execute('INSERT INTO Usuario (email, NombreUsuario) VALUES (%s, %s)', (email, nombreUsuario))
+        conn.commit()
+        return jsonify({'mensaje': 'Usuario creado'}), 201
+
+
+
 
 @app.route('/Respuesta', methods=['GET}'])
 def get_Imagen():
