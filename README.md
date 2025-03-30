@@ -35,7 +35,7 @@ source ~/.bashrc
 ```
 ### Iniciamos la base de datos 
 ```sh
-sqlcmd -S localhost -U SA -P "YourPassword123!" -i "init_db.sql"
+sqlcmd -S localhost -U SA -P "YourPassword123!"
 ```
 ### Probamos que la base de datos se haya creado correctamente
 ```sh
@@ -44,4 +44,10 @@ SELECT TABLE_SCHEMA, TABLE_NAME
 FROM INFORMATION_SCHEMA.TABLES  
 WHERE TABLE_TYPE = 'BASE TABLE';  
 GO
+```
+
+Abra **otra** terminal (no cierre la terminal que está ejecutando el servidor), y ejecute el siguiente comando:
+```sh
+cd servicios\ WEB/
+python WEBservices.py
 ```
