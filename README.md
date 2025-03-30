@@ -2,10 +2,10 @@
 
 Este es el sistema de CRUD (create, read, delete, update) del equipo 4 para el proyecto con el socio formador Lienzo. El equipo esta conformado por: 
 
--Fernando Sigala Rascón A01563650
--Jesús Alexander Herrera Acevedo A01563465
--Nadia Susana Soto Juarez A01563655
--Mauricio Balbuena Martinez A01563331
+- Fernando Sigala Rascón A01563650
+- Jesús Alexander Herrera Acevedo A01563465
+- Nadia Susana Soto Juarez A01563655
+- Mauricio Balbuena Martinez A01563331
 
 
 ## Prerequisitos
