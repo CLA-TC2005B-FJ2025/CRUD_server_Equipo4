@@ -34,7 +34,7 @@ def create_usuario():
     conn = get_connection()
     cursor = conn.cursor()
     try:
-        cursor.execute('INSERT INTO Usuario (email, NombreUsuario) VALUES (%s, %s)', (email, nombreUsuario))
+        cursor.execute('INSERT INTO Usuario (email, NombreUsuario) VALUES (%s, %s)', (email, NombreUsuario))
         conn.commit()
         return jsonify({'mensaje': 'Usuario creado'}), 201
     except pymssql.IntegrityError:
@@ -144,7 +144,7 @@ def delete_pregunta(idPregunta):
 def get_imagen():
     conn = get_connection()
     cursor = conn.cursor(as_dict=True)
-    cursor.execute('SELECT ImagenID, Activo, fechaInicio, fechaFinalizacion FROM Imagen;') #No regresa la respuesta porque sería peligroso que los usuarios pudieran acceder a ella
+    cursor.execute('SELECT * FROM Imagen;') #No regresa la respuesta porque sería peligroso que los usuarios pudieran acceder a ella
     data = cursor.fetchall()
     conn.close()
     return jsonify(data)

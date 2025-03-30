@@ -45,3 +45,10 @@ FROM INFORMATION_SCHEMA.TABLES
 WHERE TABLE_TYPE = 'BASE TABLE';  
 GO
 ```
+
+
+
+## 📚 Documentación de la API
+
+[![Swagger UI](https://img.shields.io/badge/Docs-Swagger_UI-85EA2D?logo=swagger)](https://cla-tc2005b-f2025.github.io/CRUD_server_Equipo4/)
+[![OpenAPI Spec](https://img.shields.io/badge/Descargar-OpenAPI_YAML-blue)](https://github.com/CLA-TC2005B-F2025/CRUD_server_Equipo4/blob/main/docs/openapi.yaml)
