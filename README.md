@@ -50,5 +50,8 @@ GO
 
 ## 📚 Documentación de la API
 
-[![Swagger UI](https://img.shields.io/badge/Docs-Swagger_UI-85EA2D?logo=swagger)](https://cla-tc2005b-f2025.github.io/CRUD_server_Equipo4/)
-[![OpenAPI Spec](https://img.shields.io/badge/Descargar-OpenAPI_YAML-blue)](https://github.com/CLA-TC2005B-F2025/CRUD_server_Equipo4/blob/main/docs/openapi.yaml)
+[![OpenAPI Docs](https://img.shields.io/badge/API_Docs-Live-blue?logo=swagger)](https://tu-usuario.github.io/tu-repo/)
+
+Explora la documentación interactiva:
+- [Swagger UI](https://github.com/CLA-TC2005B-FJ2025/CRUD_server_Equipo4)
+- [ReDoc](https://tu-usuario.github.io/tu-repo/redoc.html)
