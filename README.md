@@ -46,7 +46,7 @@ WHERE TABLE_TYPE = 'BASE TABLE';
 GO
 ```
 
-Abra **otra** terminal (no cierre la terminal que está ejecutando el servidor), y ejecute el siguiente comando:
+### Abra **otra** terminal (no cierre la terminal que está ejecutando el servidor), y ejecute el siguiente comando:
 ```sh
 cd servicios\ WEB/
 python WEBservices.py
